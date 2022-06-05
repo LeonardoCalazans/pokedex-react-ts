@@ -44,7 +44,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
 
   if (isLoading) {
     return (
-      <div>Loading...</div>
+      <div>Carregando...</div>
     )
   }
 
