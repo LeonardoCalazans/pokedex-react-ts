@@ -1,23 +1,34 @@
-import { AppBar, Toolbar, IconButton, Typography, Container, Grid, Button, LinearProgress, Badge } from '@mui/material';
-import { Favorite, Menu as MenuIcon } from '@mui/icons-material';
-import React, { useContext } from 'react';
-import { useQuery } from 'react-query';
-import { listPokemons } from '../pokemon/services/listPokemons';
-import PokedexCard from './components/PokedexCard';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Grid,
+  Button,
+  LinearProgress,
+  Badge,
+} from "@mui/material";
+import { Favorite, Menu as MenuIcon } from "@mui/icons-material";
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
+import { listPokemons } from "../pokemon/services/listPokemons";
+import PokedexCard from "./components/PokedexCard";
 
-import CircularProgress from '@mui/material/CircularProgress';
-import { Box } from '@mui/system';
-import { useHistory } from 'react-router-dom';
-import { FavoriteContext } from '../favorites/contexts/FavoriteContext';
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/system";
+import { useHistory } from "react-router-dom";
+import { FavoriteContext } from "../favorites/contexts/FavoriteContext";
 
-interface PokedexProps {
-
-}
+interface PokedexProps {}
 
 const Pokedex: React.FC<PokedexProps> = () => {
   const { favorites } = useContext(FavoriteContext);
   const { push } = useHistory();
-  const { data, isLoading, isRefetching, refetch } = useQuery(`listPokemons`, listPokemons);
+  const { data, isLoading, isRefetching, refetch } = useQuery(
+    `listPokemons`,
+    listPokemons
+  );
 
   const favoritesCount = favorites.length;
 
@@ -25,19 +36,22 @@ const Pokedex: React.FC<PokedexProps> = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" size="large">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            size="large"
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" >
-            Pokedex
-          </Typography>
+          <Typography variant="h6">Pokedex - Deploy Automatizado</Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
               aria-haspopup="true"
-              onClick={() => push('/favoritos')}
+              onClick={() => push("/favoritos")}
               color="inherit"
             >
               <Badge badgeContent={favoritesCount} color="secondary">
@@ -50,7 +64,7 @@ const Pokedex: React.FC<PokedexProps> = () => {
           </Button> */}
         </Toolbar>
       </AppBar>
-      {isRefetching && <LinearProgress color='secondary' />}
+      {isRefetching && <LinearProgress color="secondary" />}
 
       <Container>
         <div style={{ marginTop: `1em` }}>
