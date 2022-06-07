@@ -1,24 +1,20 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import FavoriteScreen from './favorites/FavoriteScreen';
-import Pokedex from './pokedex/Pokedex';
-import PokemonDetails from './pokemon/PokemonDetails';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { FavoriteScreen, HomePokedex, PokemonDetails } from "./scenes";
 
-interface RoutesProps {
-
-}
+interface RoutesProps {}
 
 export const Routes: React.FC<RoutesProps> = () => {
   return (
     <Switch>
-      <Route path='/pokemon/:name'>
+      <Route path="/pokemon/:name">
         <PokemonDetails />
       </Route>
-      <Route path='/favoritos'>
+      <Route path="/favoritos">
         <FavoriteScreen />
       </Route>
-      <Route path='/'>
-        <Pokedex />
+      <Route path="/">
+        <HomePokedex />
       </Route>
     </Switch>
   );

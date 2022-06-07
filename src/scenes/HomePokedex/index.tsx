@@ -12,17 +12,17 @@ import {
 import { Favorite, Menu as MenuIcon } from "@mui/icons-material";
 import React, { useContext } from "react";
 import { useQuery } from "react-query";
-import { listPokemons } from "../pokemon/services/listPokemons";
-import PokedexCard from "./components/PokedexCard";
+import { listPokemons } from "../../services/listPokemons";
+import { PokedexCard } from "../../components";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/system";
 import { useHistory } from "react-router-dom";
-import { FavoriteContext } from "../favorites/contexts/FavoriteContext";
+import { FavoriteContext } from "../../contexts/FavoriteContext";
 
 interface PokedexProps {}
 
-const Pokedex: React.FC<PokedexProps> = () => {
+const HomePokedex: React.FC<PokedexProps> = () => {
   const { favorites } = useContext(FavoriteContext);
   const { push } = useHistory();
   const { data, isLoading, isRefetching, refetch } = useQuery(
@@ -90,4 +90,4 @@ const Pokedex: React.FC<PokedexProps> = () => {
   );
 };
 
-export default Pokedex;
+export default HomePokedex;

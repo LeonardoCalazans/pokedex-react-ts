@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PokemonDetail } from '../../pokemon/interfaces/PokemonDetail';
+import { PokemonDetail } from '../interfaces/PokemonDetail';
 
 interface FavoriteContextProps {
   favorites: PokemonDetail[];

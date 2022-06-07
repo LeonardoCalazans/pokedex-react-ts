@@ -2,8 +2,8 @@ import { Favorite } from '@mui/icons-material';
 import { Card, CardMedia, CardHeader, CardActions, IconButton } from '@mui/material';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FavoriteContext } from '../../favorites/contexts/FavoriteContext';
-import { PokemonDetail } from '../../pokemon/interfaces/PokemonDetail';
+import { FavoriteContext } from '../../contexts/FavoriteContext';
+import { PokemonDetail } from '../../interfaces/PokemonDetail';
 
 interface PokedexCardProps {
   pokemon: PokemonDetail;

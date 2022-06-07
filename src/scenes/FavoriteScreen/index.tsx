@@ -1,13 +1,18 @@
-import { AppBar, Toolbar, IconButton, Typography, Container, Grid } from '@mui/material';
-import { Menu as MenuIcon } from '@mui/icons-material';
-import React, { useContext } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Grid,
+} from "@mui/material";
+import { Menu as MenuIcon } from "@mui/icons-material";
+import React, { useContext } from "react";
 
-import { FavoriteContext } from '../favorites/contexts/FavoriteContext';
-import PokedexCard from '../pokedex/components/PokedexCard';
+import { FavoriteContext } from "../../contexts/FavoriteContext";
+import { PokedexCard } from "../../components";
 
-interface FavoriteScreenProps {
-
-}
+interface FavoriteScreenProps {}
 
 const FavoriteScreen: React.FC<FavoriteScreenProps> = () => {
   const { favorites } = useContext(FavoriteContext);
@@ -16,12 +21,15 @@ const FavoriteScreen: React.FC<FavoriteScreenProps> = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" size="large">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            size="large"
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" >
-            FavoriteScreen
-          </Typography>
+          <Typography variant="h6">FavoriteScreen</Typography>
         </Toolbar>
       </AppBar>
 

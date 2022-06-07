@@ -2,7 +2,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { BrowserRouter } from 'react-router-dom';
-import { FavoriteProvider } from './favorites/contexts/FavoriteContext';
+import { FavoriteProvider } from './contexts/FavoriteContext';
 import Routes from './routes';
 
 interface AppProps {

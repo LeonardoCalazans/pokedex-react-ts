@@ -3,8 +3,8 @@ import { AppBar, Toolbar, Typography, Container, Button, LinearProgress, Box, Ic
 import React, { useContext } from 'react';
 import { useQuery } from 'react-query';
 import { useHistory, useParams } from 'react-router-dom';
-import { FavoriteContext } from '../favorites/contexts/FavoriteContext';
-import { getPokemonDetails } from './services/getPokemonDetails';
+import { FavoriteContext } from '../../contexts/FavoriteContext';
+import { getPokemonDetails } from '../../services/getPokemonDetails';
 
 interface PokemonDetailsProps {
 
