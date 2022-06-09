@@ -46,7 +46,7 @@ const HomePokedex: React.FC<PokedexProps> = () => {
           </IconButton>
           <Typography variant="h6">Pokedex - Deploy Automatizado</Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ display: { xs: "flex" } }}>
             <IconButton
               size="large"
               aria-label="show more"
