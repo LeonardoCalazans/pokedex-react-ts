@@ -1,92 +1,119 @@
-import { Favorite } from '@mui/icons-material';
-import { AppBar, Toolbar, Typography, Container, Button, LinearProgress, Box, IconButton } from '@mui/material';
-import React, { useContext } from 'react';
-import { useQuery } from 'react-query';
-import { useHistory, useParams } from 'react-router-dom';
-import { FavoriteContext } from '../../contexts/FavoriteContext';
-import { getPokemonDetails } from '../../services/getPokemonDetails';
+// import { Favorite } from "@mui/icons-material";
+// import {
+//   AppBar,
+//   Toolbar,
+//   Typography,
+//   Container,
+//   Button,
+//   LinearProgress,
+//   Box,
+//   IconButton,
+// } from "@mui/material";
+// import React, { useContext } from "react";
+// import { useQuery } from "react-query";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { FavoriteContext } from "../../contexts/FavoriteContext";
+// import { getPokemonDetails } from "../../services/getPokemonDetails";
 
-interface PokemonDetailsProps {
+// interface PokemonDetailsProps {}
 
-}
+// interface PokemonQueryParams {
+//   name: string;
+// }
 
-interface PokemonQueryParams {
-  name: string;
-}
+// export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
+//   const { favorites, setFavorites } = useContext(FavoriteContext);
+//   const navigate = useNavigate();
+//   const name = useParams<PokemonQueryParams>();
 
-export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
-  const { favorites, setFavorites } = useContext(FavoriteContext);
-  const { goBack } = useHistory();
-  const { name } = useParams<PokemonQueryParams>();
+//   const { data, isRefetching, isLoading } = useQuery(
+//     `pokemon-${name}`,
+//     () => getPokemonDetails(name),
+//     {
+//       cacheTime: 1000 * 60 * 60,
+//       staleTime: 20000,
+//     }
+//   );
 
-  const { data, isRefetching, isLoading } = useQuery(
-    `pokemon-${name}`,
-    () => getPokemonDetails(name),
-    {
-      cacheTime: 1000 * 60 * 60,
-      staleTime: 20000,
-    }
-  );
+//   const selectedPokemonDetails = data;
 
-  const selectedPokemonDetails = data;
+//   const addPokemonToFavorite = () => {
+//     if (!selectedPokemonDetails) return;
+//     setFavorites([...favorites, selectedPokemonDetails]);
+//   };
 
-  const addPokemonToFavorite = () => {
-    if (!selectedPokemonDetails) return;
-    setFavorites([...favorites, selectedPokemonDetails]);
-  }
+//   const removePokemonFromFavorites = () => {
+//     if (!selectedPokemonDetails) return;
+//     setFavorites(
+//       favorites.filter((poke) => poke.name !== selectedPokemonDetails.name)
+//     );
+//   };
 
-  const removePokemonFromFavorites = () => {
-    if (!selectedPokemonDetails) return;
-    setFavorites(favorites.filter((poke) => poke.name !== selectedPokemonDetails.name));
-  }
+//   const goBack = () => {
+//     return navigate(-1);
+//   };
 
-  const isFavorite = favorites.some((poke) => poke.name === selectedPokemonDetails?.name);
+//   const isFavorite = favorites.some(
+//     (poke) => poke.name === selectedPokemonDetails?.name
+//   );
 
-  if (isLoading) {
-    return (
-      <div>Carregando...</div>
-    )
-  }
+//   if (isLoading) {
+//     return <div>Carregando...</div>;
+//   }
 
-  return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <Button onClick={goBack}>
-            Voltar
-          </Button>
-          <Typography variant="h6" >
-            {selectedPokemonDetails?.name}
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton onClick={() => isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()} aria-label="add to favorites">
-              <Favorite color={isFavorite ? `error` : `disabled`} />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {isRefetching && <LinearProgress />}
+//   return (
+//     <>
+//       <AppBar position="static">
+//         <Toolbar>
+//           <Button onClick={goBack}>Voltar</Button>
+//           <Typography variant="h6">{selectedPokemonDetails?.name}</Typography>
+//           <Box sx={{ flexGrow: 1 }} />
+//           <Box sx={{ display: { xs: "flex", md: "none" } }}>
+//             <IconButton
+//               onClick={() =>
+//                 isFavorite
+//                   ? removePokemonFromFavorites()
+//                   : addPokemonToFavorite()
+//               }
+//               aria-label="add to favorites"
+//             >
+//               <Favorite color={isFavorite ? `error` : `disabled`} />
+//             </IconButton>
+//           </Box>
+//         </Toolbar>
+//       </AppBar>
+//       {isRefetching && <LinearProgress />}
 
+//       <Container>
+//         <img
+//           alt=""
+//           width="100%"
+//           src={selectedPokemonDetails?.sprites.front_default}
+//         />
 
-      <Container>
-        <img alt='' width='100%' src={selectedPokemonDetails?.sprites.front_default} />
+//         <Typography variant="h2">
+//           {selectedPokemonDetails?.species.name}
+//         </Typography>
 
-        <Typography variant='h2'>{selectedPokemonDetails?.species.name}</Typography>
+//         <Typography>
+//           {selectedPokemonDetails?.types
+//             .map((type) => {
+//               return type.type.name;
+//             })
+//             .join(", ")}
+//         </Typography>
 
-        <Typography>
-          {selectedPokemonDetails?.types.map((type) => {
-            return type.type.name;
-          }).join(', ')}
-        </Typography>
+//         <div>{selectedPokemonDetails?.height}</div>
+//         <div>{selectedPokemonDetails?.weight}</div>
 
-        <div>{selectedPokemonDetails?.height}</div>
-        <div>{selectedPokemonDetails?.weight}</div>
+//         <div>
+//           {selectedPokemonDetails?.abilities
+//             .map((ability) => ability.ability.name)
+//             .join(", ")}
+//         </div>
+//       </Container>
+//     </>
+//   );
+// };
 
-        <div>{selectedPokemonDetails?.abilities.map((ability) => ability.ability.name).join(', ')}</div>
-      </Container>
-    </>
-  );
-};
-
-export default PokemonDetails;
+// export default PokemonDetails;
