@@ -17,14 +17,14 @@ import { PokedexCard } from "../../components";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/system";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 
 interface PokedexProps {}
 
-const HomePokedex: React.FC<PokedexProps> = () => {
+const Home: React.FC<PokedexProps> = () => {
   const { favorites } = useContext(FavoriteContext);
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { data, isLoading, isRefetching, refetch } = useQuery(
     `listPokemons`,
     listPokemons
@@ -51,7 +51,7 @@ const HomePokedex: React.FC<PokedexProps> = () => {
               size="large"
               aria-label="show more"
               aria-haspopup="true"
-              onClick={() => push("/favoritos")}
+              onClick={() => navigate("/favoritos")}
               color="inherit"
             >
               <Badge badgeContent={favoritesCount} color="secondary">
@@ -90,4 +90,4 @@ const HomePokedex: React.FC<PokedexProps> = () => {
   );
 };
 
-export default HomePokedex;
+export default Home;
