@@ -1,31 +1,18 @@
-import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { BrowserRouter } from 'react-router-dom';
-import { FavoriteProvider } from './contexts/FavoriteContext';
-import Routes from './routes';
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { AuthGoogleProvider } from "./contexts/authGoogle";
+import AppRoutes from "./routes/auth.routes";
 
-interface AppProps {
-
-}
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    }
-  }
-})
+interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
+  const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
-      <FavoriteProvider>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </FavoriteProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <AuthGoogleProvider>
+        <AppRoutes />
+      </AuthGoogleProvider>
     </QueryClientProvider>
   );
 };

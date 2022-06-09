@@ -1,9 +1,15 @@
-import { Favorite } from '@mui/icons-material';
-import { Card, CardMedia, CardHeader, CardActions, IconButton } from '@mui/material';
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import { FavoriteContext } from '../../contexts/FavoriteContext';
-import { PokemonDetail } from '../../interfaces/PokemonDetail';
+import { Favorite } from "@mui/icons-material";
+import {
+  Card,
+  CardMedia,
+  CardHeader,
+  CardActions,
+  IconButton,
+} from "@mui/material";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { FavoriteContext } from "../../contexts/FavoriteContext";
+import { PokemonDetail } from "../../interfaces/PokemonDetail";
 
 interface PokedexCardProps {
   pokemon: PokemonDetail;
@@ -11,19 +17,19 @@ interface PokedexCardProps {
 
 const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const { setFavorites, favorites } = useContext(FavoriteContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleClick() {
-    history.push(`/pokemon/${pokemon.name}`);
+    navigate(`/pokemon/${pokemon.name}`);
   }
 
   const addPokemonToFavorite = () => {
     setFavorites([...favorites, pokemon]);
-  }
+  };
 
   const removePokemonFromFavorites = () => {
     setFavorites(favorites.filter((poke) => poke.name !== pokemon.name));
-  }
+  };
 
   const isFavorite = favorites.some((poke) => poke.name === pokemon.name);
 
@@ -39,10 +45,15 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
       />
       <CardHeader
         title={pokemon.name}
-        subheader={pokemon.types.map((type) => type.type.name).join(', ')}
+        subheader={pokemon.types.map((type) => type.type.name).join(", ")}
       />
       <CardActions disableSpacing>
-        <IconButton onClick={() => isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()} aria-label="add to favorites">
+        <IconButton
+          onClick={() =>
+            isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()
+          }
+          aria-label="add to favorites"
+        >
           <Favorite color={isFavorite ? `error` : `disabled`} />
         </IconButton>
       </CardActions>
