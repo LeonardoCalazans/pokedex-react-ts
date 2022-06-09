@@ -1,3 +1,8 @@
+import React from "react";
+
+export function PokemonDetails() {
+  return <div></div>;
+}
 // import { Favorite } from "@mui/icons-material";
 // import {
 //   AppBar,
