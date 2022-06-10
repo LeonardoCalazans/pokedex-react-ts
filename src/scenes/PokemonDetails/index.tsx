@@ -1,10 +1,9 @@
-import { Favorite } from "@mui/icons-material";
+import { ArrowBack, Favorite } from "@mui/icons-material";
 import {
   AppBar,
   Toolbar,
   Typography,
   Container,
-  Button,
   LinearProgress,
   Box,
   IconButton,
@@ -37,6 +36,8 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
 
   const selectedPokemonDetails = data;
 
+  const goBack = () => navigate(-1);
+
   const addPokemonToFavorite = () => {
     if (!selectedPokemonDetails) return;
     setFavorites([...favorites, selectedPokemonDetails]);
@@ -47,10 +48,6 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
     setFavorites(
       favorites.filter((poke: any) => poke.name !== selectedPokemonDetails.name)
     );
-  };
-
-  const goBack = () => {
-    return navigate(-1);
   };
 
   const isFavorite = favorites.some(
@@ -65,10 +62,23 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Button onClick={goBack}>Voltar</Button>
-          <Typography variant="h6">{selectedPokemonDetails?.name}</Typography>
+          <IconButton 
+            onClick={goBack} 
+            edge="start" 
+            color="inherit" 
+            aria-label="Voltar">
+            <ArrowBack />
+            Voltar
+          </IconButton>
+          <Typography 
+            sx={{
+              flexGrow: 12,
+              textAlign: "center", 
+            }} 
+            variant="h4">{selectedPokemonDetails?.name}
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ display: { xs: "flex" } }}>
             <IconButton
               onClick={() =>
                 isFavorite
@@ -96,18 +106,18 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
         </Typography>
 
         <Typography>
-          {selectedPokemonDetails?.types
+          Tipo: {selectedPokemonDetails?.types
             .map((type) => {
               return type.type.name;
             })
             .join(", ")}
         </Typography>
 
-        <div>{selectedPokemonDetails?.height}</div>
-        <div>{selectedPokemonDetails?.weight}</div>
+        <div>Altura: {selectedPokemonDetails?.height}</div>
+        <div>Peso: {selectedPokemonDetails?.weight}</div>
 
         <div>
-          {selectedPokemonDetails?.abilities
+          Habilidades: {selectedPokemonDetails?.abilities
             .map((ability) => ability.ability.name)
             .join(", ")}
         </div>

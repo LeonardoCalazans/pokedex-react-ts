@@ -6,30 +6,41 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
+import { ArrowBack, Menu as MenuIcon } from "@mui/icons-material";
 import React, { useContext } from "react";
 
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { PokedexCard } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 interface FavoriteScreenProps {}
 
 const FavoriteScreen: React.FC<FavoriteScreenProps> = () => {
   const { favorites } = useContext(FavoriteContext);
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
 
   return (
     <div>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            size="large"
-          >
-            <MenuIcon />
+          <IconButton 
+            onClick={goBack} 
+            edge="start" 
+            color="inherit" 
+            aria-label="Voltar">
+            <ArrowBack />
+            Voltar
           </IconButton>
-          <Typography variant="h6">FavoriteScreen</Typography>
+          <Typography 
+            sx={{
+              flexGrow: 6,
+              textAlign: "center", 
+            }}
+            variant="h5">
+              Pokemons Favoritos
+          </Typography>
         </Toolbar>
       </AppBar>
 
