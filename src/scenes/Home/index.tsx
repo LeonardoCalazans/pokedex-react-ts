@@ -86,6 +86,20 @@ const Home: React.FC<PokedexProps> = () => {
           )}
         </div>
       </Container>
+      <footer style={{ marginTop: `2em` }}>
+        <Typography 
+          component={'span'}  
+          variant={'body2'} 
+          color="textSecondary" 
+          align="center">
+          <p><strong>Trabalho desenvolvido por: </strong></p>
+          <p>Leonardo Pinto Silva Calazans - 2020101772</p>
+          <p>Lucas Gomes Ribeiro - 2020101323</p>
+          <p>Luiz Fernando Nunes de Almeida - 2012101188</p>
+          <p>Julio Cesar de Souza Lima - 2013201790</p>
+          <p>Wendel Felipe Nascimento Nogueira - 2020101189</p>
+        </Typography>
+      </footer>
     </div>
   );
 };
