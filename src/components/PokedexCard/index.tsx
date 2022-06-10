@@ -10,6 +10,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { PokemonDetail } from "../../utils/interfaces/PokemonDetail";
+import { firstUpperCase } from "../../utils/modules/validations";
 
 interface PokedexCardProps {
   pokemon: PokemonDetail;
@@ -18,6 +19,7 @@ interface PokedexCardProps {
 const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const { setFavorites, favorites } = useContext(FavoriteContext);
   const navigate = useNavigate();
+  const pokemonName = firstUpperCase(pokemon.name);
 
   function handleClick() {
     navigate(`/home/pokemon/${pokemon.name}`);
@@ -37,12 +39,12 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
     <Card sx={{ maxWidth: 300, maxHeight: 300 }}>
       <CardMedia
         component="img"
-        alt={pokemon.name}
+        alt={pokemonName}
         style={{ contain: "size" }}
         width="200"
         height="200"
         image={pokemon.sprites.other?.["official-artwork"].front_default}
-        title={pokemon.name}
+        title={pokemonName}
         onClick={handleClick}
       />
       <view
@@ -53,9 +55,11 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
         }}
       >
         <CardHeader
-          placeholder={pokemon.name}
-          title={pokemon.name}
-          subheader={pokemon.types.map((type) => type.type.name).join(", ")}
+          placeholder={pokemonName}
+          title={pokemonName}
+          subheader={pokemon.types
+            .map((type) => firstUpperCase(type.type.name))
+            .join(", ")}
         />
         <CardActions>
           <IconButton

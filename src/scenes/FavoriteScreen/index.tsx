@@ -12,6 +12,7 @@ import React, { useContext } from "react";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { PokedexCard } from "../../components";
 import { useNavigate } from "react-router-dom";
+import { firstUpperCase } from "../../utils/modules/validations";
 
 interface FavoriteScreenProps {}
 
@@ -48,7 +49,7 @@ const FavoriteScreen: React.FC<FavoriteScreenProps> = () => {
         <div style={{ marginTop: `1em` }}>
           <Grid container spacing={2}>
             {favorites?.map((pokemon) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={pokemon.name}>
+              <Grid item xs={12} sm={6} md={4} lg={3} key={firstUpperCase(pokemon.name)}>
                 <PokedexCard pokemon={pokemon} />
               </Grid>
             ))}

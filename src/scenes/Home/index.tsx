@@ -5,7 +5,6 @@ import {
   Typography,
   Container,
   Grid,
-  Button,
   LinearProgress,
   Badge,
 } from "@mui/material";
@@ -59,9 +58,6 @@ const Home: React.FC<PokedexProps> = () => {
               </Badge>
             </IconButton>
           </Box>
-          {/* <Button variant="outlined" startIcon={<Favorite />}>
-            Delete
-          </Button> */}
         </Toolbar>
       </AppBar>
       {isRefetching && <LinearProgress color="secondary" />}

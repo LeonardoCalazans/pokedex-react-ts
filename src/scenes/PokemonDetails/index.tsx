@@ -13,6 +13,7 @@ import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { getPokemonDetails } from "../../services/getPokemonDetails";
+import { firstUpperCase } from "../../utils/modules/validations";
 
 interface PokemonDetailsProps {}
 
@@ -78,7 +79,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
             }}
             variant="h4"
           >
-            {selectedPokemonDetails?.name}
+            {firstUpperCase(selectedPokemonDetails?.name as string)}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "flex" } }}>
@@ -108,23 +109,25 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
         />
 
         <Typography variant="h2">
-          {selectedPokemonDetails?.species.name}
+          {firstUpperCase(selectedPokemonDetails?.species.name as string)}
         </Typography>
 
         <Typography>
-          Tipo: {selectedPokemonDetails?.types
+          Type:{" "}
+          {selectedPokemonDetails?.types
             .map((type) => {
-              return type.type.name;
+              return firstUpperCase(type.type.name);
             })
             .join(", ")}
         </Typography>
 
-        <div>Altura: {selectedPokemonDetails?.height}</div>
-        <div>Peso: {selectedPokemonDetails?.weight}</div>
+        <div>Height: {selectedPokemonDetails?.height}</div>
+        <div>Weight: {selectedPokemonDetails?.weight}</div>
 
         <div>
-          Habilidades: {selectedPokemonDetails?.abilities
-            .map((ability) => ability.ability.name)
+          Skills:{" "}
+          {selectedPokemonDetails?.abilities
+            .map((ability) => firstUpperCase(ability.ability.name))
             .join(", ")}
         </div>
       </Container>
