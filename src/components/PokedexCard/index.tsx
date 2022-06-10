@@ -34,12 +34,14 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const isFavorite = favorites.some((poke) => poke.name === pokemon.name);
 
   return (
-    <Card>
+    <Card sx={{ maxWidth: 305, maxHeight: 305 }}>
       <CardMedia
         component="img"
         alt={pokemon.name}
-        height="140"
-        image={pokemon.sprites.front_default}
+        style={{ contain: "size" }}
+        width="200"
+        height="200"
+        image={pokemon.sprites.other?.["official-artwork"].front_default}
         title={pokemon.name}
         onClick={handleClick}
       />

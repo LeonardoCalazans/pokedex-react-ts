@@ -62,20 +62,23 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <IconButton 
-            onClick={goBack} 
-            edge="start" 
-            color="inherit" 
-            aria-label="Voltar">
+          <IconButton
+            onClick={goBack}
+            edge="start"
+            color="inherit"
+            aria-label="Voltar"
+          >
             <ArrowBack />
             Voltar
           </IconButton>
-          <Typography 
+          <Typography
             sx={{
               flexGrow: 12,
-              textAlign: "center", 
-            }} 
-            variant="h4">{selectedPokemonDetails?.name}
+              textAlign: "center",
+            }}
+            variant="h4"
+          >
+            {selectedPokemonDetails?.name}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "flex" } }}>
@@ -97,8 +100,11 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
       <Container>
         <img
           alt=""
-          width="100%"
-          src={selectedPokemonDetails?.sprites.front_default}
+          width="50%"
+          src={
+            selectedPokemonDetails?.sprites.other?.["official-artwork"]
+              .front_default
+          }
         />
 
         <Typography variant="h2">
