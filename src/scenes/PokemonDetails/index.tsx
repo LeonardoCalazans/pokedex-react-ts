@@ -13,6 +13,7 @@ import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { getPokemonDetails } from "../../services/getPokemonDetails";
+import { firstUpperCase } from "../../utils/modules/validations";
 
 interface PokemonDetailsProps {}
 
@@ -62,20 +63,23 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <IconButton 
-            onClick={goBack} 
-            edge="start" 
-            color="inherit" 
-            aria-label="Voltar">
+          <IconButton
+            onClick={goBack}
+            edge="start"
+            color="inherit"
+            aria-label="Voltar"
+          >
             <ArrowBack />
             Voltar
           </IconButton>
-          <Typography 
+          <Typography
             sx={{
               flexGrow: 12,
-              textAlign: "center", 
-            }} 
-            variant="h4">{selectedPokemonDetails?.name}
+              textAlign: "center",
+            }}
+            variant="h4"
+          >
+            {firstUpperCase(selectedPokemonDetails?.name as string)}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "flex" } }}>
@@ -94,33 +98,45 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
       </AppBar>
       {isRefetching && <LinearProgress />}
 
-      <Container>
+      <Container
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <img
           alt=""
-          width="100%"
-          src={selectedPokemonDetails?.sprites.front_default}
+          width="50%"
+          src={
+            selectedPokemonDetails?.sprites.other?.["official-artwork"]
+              .front_default
+          }
         />
 
         <Typography variant="h2">
-          {selectedPokemonDetails?.species.name}
+          {firstUpperCase(selectedPokemonDetails?.species.name as string)}
         </Typography>
+        <view style={{ alignItems: "flex-start" }}>
+          <Typography>
+            Type:{" "}
+            {selectedPokemonDetails?.types
+              .map((type) => {
+                return firstUpperCase(type.type.name);
+              })
+              .join(", ")}
+          </Typography>
 
-        <Typography>
-          Tipo: {selectedPokemonDetails?.types
-            .map((type) => {
-              return type.type.name;
-            })
-            .join(", ")}
-        </Typography>
+          <div>Height: {selectedPokemonDetails?.height}</div>
+          <div>Weight: {selectedPokemonDetails?.weight}</div>
 
-        <div>Altura: {selectedPokemonDetails?.height}</div>
-        <div>Peso: {selectedPokemonDetails?.weight}</div>
-
-        <div>
-          Habilidades: {selectedPokemonDetails?.abilities
-            .map((ability) => ability.ability.name)
-            .join(", ")}
-        </div>
+          <div>
+            Skills:{" "}
+            {selectedPokemonDetails?.abilities
+              .map((ability) => firstUpperCase(ability.ability.name))
+              .join(", ")}
+          </div>
+        </view>
       </Container>
     </>
   );

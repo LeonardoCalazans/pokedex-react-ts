@@ -9,7 +9,8 @@ import {
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
-import { PokemonDetail } from "../../interfaces/PokemonDetail";
+import { PokemonDetail } from "../../utils/interfaces/PokemonDetail";
+import { firstUpperCase } from "../../utils/modules/validations";
 
 interface PokedexCardProps {
   pokemon: PokemonDetail;
@@ -18,6 +19,7 @@ interface PokedexCardProps {
 const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const { setFavorites, favorites } = useContext(FavoriteContext);
   const navigate = useNavigate();
+  const pokemonName = firstUpperCase(pokemon.name);
 
   function handleClick() {
     navigate(`/home/pokemon/${pokemon.name}`);
@@ -34,29 +36,42 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const isFavorite = favorites.some((poke) => poke.name === pokemon.name);
 
   return (
-    <Card>
+    <Card sx={{ maxWidth: 300, maxHeight: 300 }}>
       <CardMedia
         component="img"
-        alt={pokemon.name}
-        height="140"
-        image={pokemon.sprites.front_default}
-        title={pokemon.name}
+        alt={pokemonName}
+        style={{ contain: "size" }}
+        width="200"
+        height="200"
+        image={pokemon.sprites.other?.["official-artwork"].front_default}
+        title={pokemonName}
         onClick={handleClick}
       />
-      <CardHeader
-        title={pokemon.name}
-        subheader={pokemon.types.map((type) => type.type.name).join(", ")}
-      />
-      <CardActions disableSpacing>
-        <IconButton
-          onClick={() =>
-            isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()
-          }
-          aria-label="add to favorites"
-        >
-          <Favorite color={isFavorite ? `error` : `disabled`} />
-        </IconButton>
-      </CardActions>
+      <view
+        style={{
+          flexDirection: "row",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <CardHeader
+          placeholder={pokemonName}
+          title={pokemonName}
+          subheader={pokemon.types
+            .map((type) => firstUpperCase(type.type.name))
+            .join(", ")}
+        />
+        <CardActions>
+          <IconButton
+            onClick={() =>
+              isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()
+            }
+            aria-label="add to favorites"
+          >
+            <Favorite color={isFavorite ? `error` : `disabled`} />
+          </IconButton>
+        </CardActions>
+      </view>
     </Card>
   );
 };

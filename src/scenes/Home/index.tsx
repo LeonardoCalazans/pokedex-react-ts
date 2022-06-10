@@ -5,7 +5,6 @@ import {
   Typography,
   Container,
   Grid,
-  Button,
   LinearProgress,
   Badge,
 } from "@mui/material";
@@ -59,9 +58,6 @@ const Home: React.FC<PokedexProps> = () => {
               </Badge>
             </IconButton>
           </Box>
-          {/* <Button variant="outlined" startIcon={<Favorite />}>
-            Delete
-          </Button> */}
         </Toolbar>
       </AppBar>
       {isRefetching && <LinearProgress color="secondary" />}
@@ -74,7 +70,6 @@ const Home: React.FC<PokedexProps> = () => {
             </>
           ) : (
             <>
-              <Button onClick={() => refetch()}>refetch</Button>
               <Grid container spacing={2}>
                 {data?.results.map((pokemon) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={pokemon.name}>
@@ -87,12 +82,15 @@ const Home: React.FC<PokedexProps> = () => {
         </div>
       </Container>
       <footer style={{ marginTop: `2em` }}>
-        <Typography 
-          component={'span'}  
-          variant={'body2'} 
-          color="textSecondary" 
-          align="center">
-          <p><strong>Trabalho desenvolvido por: </strong></p>
+        <Typography
+          component={"span"}
+          variant={"body2"}
+          color="textSecondary"
+          align="center"
+        >
+          <p>
+            <strong>Trabalho desenvolvido por: </strong>
+          </p>
           <p>Leonardo Pinto Silva Calazans - 2020101772</p>
           <p>Lucas Gomes Ribeiro - 2020101323</p>
           <p>Luiz Fernando Nunes de Almeida - 2012101188</p>
