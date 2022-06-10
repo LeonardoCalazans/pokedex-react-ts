@@ -51,7 +51,7 @@ const Home: React.FC<PokedexProps> = () => {
               size="large"
               aria-label="show more"
               aria-haspopup="true"
-              onClick={() => navigate("/favoritos")}
+              onClick={() => navigate("/home/favoritos")}
               color="inherit"
             >
               <Badge badgeContent={favoritesCount} color="secondary">

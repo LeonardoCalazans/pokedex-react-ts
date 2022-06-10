@@ -20,7 +20,7 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate(`/pokemon/${pokemon.name}`);
+    navigate(`/home/pokemon/${pokemon.name}`);
   }
 
   const addPokemonToFavorite = () => {

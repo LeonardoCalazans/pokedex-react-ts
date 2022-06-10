@@ -21,7 +21,7 @@ const Login = () => {
     );
   }
 
-  return <Navigate to="/Home" />;
+  return <Navigate to="/home" />;
 };
 
 export default Login;
