@@ -98,7 +98,13 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
       </AppBar>
       {isRefetching && <LinearProgress />}
 
-      <Container>
+      <Container
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <img
           alt=""
           width="50%"
@@ -111,25 +117,26 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
         <Typography variant="h2">
           {firstUpperCase(selectedPokemonDetails?.species.name as string)}
         </Typography>
+        <view style={{ alignItems: "flex-start" }}>
+          <Typography>
+            Type:{" "}
+            {selectedPokemonDetails?.types
+              .map((type) => {
+                return firstUpperCase(type.type.name);
+              })
+              .join(", ")}
+          </Typography>
 
-        <Typography>
-          Type:{" "}
-          {selectedPokemonDetails?.types
-            .map((type) => {
-              return firstUpperCase(type.type.name);
-            })
-            .join(", ")}
-        </Typography>
+          <div>Height: {selectedPokemonDetails?.height}</div>
+          <div>Weight: {selectedPokemonDetails?.weight}</div>
 
-        <div>Height: {selectedPokemonDetails?.height}</div>
-        <div>Weight: {selectedPokemonDetails?.weight}</div>
-
-        <div>
-          Skills:{" "}
-          {selectedPokemonDetails?.abilities
-            .map((ability) => firstUpperCase(ability.ability.name))
-            .join(", ")}
-        </div>
+          <div>
+            Skills:{" "}
+            {selectedPokemonDetails?.abilities
+              .map((ability) => firstUpperCase(ability.ability.name))
+              .join(", ")}
+          </div>
+        </view>
       </Container>
     </>
   );
