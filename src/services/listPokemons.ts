@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PokemonDetail } from "../interfaces/PokemonDetail";
+import { PokemonDetail } from "../utils/interfaces/PokemonDetail";
 import { getPokemonDetails } from "./getPokemonDetails";
 
 export interface PokemonListInterface {

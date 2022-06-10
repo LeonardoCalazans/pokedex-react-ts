@@ -9,7 +9,7 @@ import {
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FavoriteContext } from "../../contexts/FavoriteContext";
-import { PokemonDetail } from "../../interfaces/PokemonDetail";
+import { PokemonDetail } from "../../utils/interfaces/PokemonDetail";
 
 interface PokedexCardProps {
   pokemon: PokemonDetail;
