@@ -34,7 +34,7 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
   const isFavorite = favorites.some((poke) => poke.name === pokemon.name);
 
   return (
-    <Card sx={{ maxWidth: 305, maxHeight: 305 }}>
+    <Card sx={{ maxWidth: 300, maxHeight: 300 }}>
       <CardMedia
         component="img"
         alt={pokemon.name}
@@ -45,20 +45,29 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
         title={pokemon.name}
         onClick={handleClick}
       />
-      <CardHeader
-        title={pokemon.name}
-        subheader={pokemon.types.map((type) => type.type.name).join(", ")}
-      />
-      <CardActions disableSpacing>
-        <IconButton
-          onClick={() =>
-            isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()
-          }
-          aria-label="add to favorites"
-        >
-          <Favorite color={isFavorite ? `error` : `disabled`} />
-        </IconButton>
-      </CardActions>
+      <view
+        style={{
+          flexDirection: "row",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <CardHeader
+          placeholder={pokemon.name}
+          title={pokemon.name}
+          subheader={pokemon.types.map((type) => type.type.name).join(", ")}
+        />
+        <CardActions>
+          <IconButton
+            onClick={() =>
+              isFavorite ? removePokemonFromFavorites() : addPokemonToFavorite()
+            }
+            aria-label="add to favorites"
+          >
+            <Favorite color={isFavorite ? `error` : `disabled`} />
+          </IconButton>
+        </CardActions>
+      </view>
     </Card>
   );
 };
