@@ -1,0 +1,45 @@
+[debug] [2022-06-11T02:38:50.904Z] ----------------------------------------------------------------------
+[debug] [2022-06-11T02:38:50.905Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2022-06-11T02:38:50.906Z] CLI Version:   11.0.1
+[debug] [2022-06-11T02:38:50.906Z] Platform:      win32
+[debug] [2022-06-11T02:38:50.906Z] Node Version:  v16.14.0
+[debug] [2022-06-11T02:38:50.907Z] Time:          Fri Jun 10 2022 23:38:50 GMT-0300 (GMT-03:00)
+[debug] [2022-06-11T02:38:50.907Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-11T02:38:50.967Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-11T02:38:50.967Z] > authorizing via signed-in user (leonardopintosilva.lps@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Projects\desenvolvimentosWEB\pokedex
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-06-11T02:38:58.019Z] Using project from CLI flag: pokedex-react-ts
+[debug] [2022-06-11T02:38:58.021Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/pokedex-react-ts [none]
+[debug] [2022-06-11T02:38:59.146Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/pokedex-react-ts 200
+[debug] [2022-06-11T02:38:59.146Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/pokedex-react-ts {"projectId":"pokedex-react-ts","projectNumber":"509339295460","displayName":"pokedex-react-ts","name":"projects/pokedex-react-ts","resources":{"hostingSite":"pokedex-react-ts","storageBucket":"pokedex-react-ts.appspot.com","locationId":"southamerica-east1"},"state":"ACTIVE"}
+[info] i  Using project pokedex-react-ts (pokedex-react-ts) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
