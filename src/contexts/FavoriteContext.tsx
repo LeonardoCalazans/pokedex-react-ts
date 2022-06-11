@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { PokemonDetail } from '../interfaces/PokemonDetail';
+import { PokemonDetail } from '../utils/interfaces/PokemonDetail';
 
 interface FavoriteContextProps {
   favorites: PokemonDetail[];
   setFavorites: React.Dispatch<React.SetStateAction<PokemonDetail[]>>;
+}
+
+interface FavoriteProviderProps {
+  children?: React.ReactNode;
 }
 
 const INITAL_FAVORITES_VALUE: PokemonDetail[] = [];
@@ -14,7 +18,7 @@ export const FavoriteContext = React.createContext<FavoriteContextProps>({
   setFavorites: () => console.warn(`setFavorites is not ready`),
 });
 
-export const FavoriteProvider: React.FC = ({ children }) => {
+export const FavoriteProvider: React.FC<FavoriteProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<PokemonDetail[]>(INITAL_FAVORITES_VALUE);
 
   return (
