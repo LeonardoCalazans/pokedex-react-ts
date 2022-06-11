@@ -17,10 +17,6 @@ import { firstUpperCase } from "../../utils/modules/validations";
 
 interface PokemonDetailsProps {}
 
-interface PokemonQueryParams {
-  name: any;
-}
-
 export const PokemonDetails: React.FC<PokemonDetailsProps> = () => {
   const { favorites, setFavorites } = useContext(FavoriteContext);
   const navigate = useNavigate();
