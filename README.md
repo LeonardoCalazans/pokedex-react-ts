@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+![image](https://user-images.githubusercontent.com/101343665/173166953-2f89b42a-33c3-48fd-aaad-bf43cf75e7c7.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Pokedex React TS
 
-In the project directory, you can run:
+Esse projeto tem como objetivo produzir uma pokedex em que você pode logar com seu usuario e ver os pokemons e favoritar eles, podendo vê-los em uma lista apenas com os favoritos.
 
-### `yarn start`
+Foi um trabalho produzido com o prazo de uma semana, afim de ser entregue ao professor da Unicarioca [Antonio Felipe Podgorski Bezerra](https://github.com/podgorski) para a matéria DESENVOLVIMENTO DE APLICAÇÕES WEB 2022/1
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologias Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- HTML -> Utilizado para a produção de uma pagina statica.
+- CSS
+- Javascript  ES6 -> Utilizando a conveção ES6 e organizando os arquivos por modulos.
+- Gitflow -> Ultilizando apenas a main para criar branchs e trabalharmos separadamente sem interferir no codigo em produção. Utilizando as boas praticas de criar PR para outros DEVS aprovarem e testarem.
+- Materials UI
+- React
+- Typescript
+- Firebase e Fire store
+- Style-components
 
-### `yarn test`
+## Projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+https://user-images.githubusercontent.com/101343665/173167269-d6bba8d6-ee36-453f-a26b-f1830a067deb.mp4
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Projeto realizado pelos develops
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Leonardo Pinto Silva Calazans - Matricula: 2020101772](https://github.com/LeonardoCalazans)
+- [Wendel Felipe Nascimento Nogueira - Matrícula: 2020101189](https://github.com/WendelNogueira23)
+- [Lucas Gomes Ribeiro - Matrícula: 2020101323](https://github.com/LucsGomes)
+- Luiz Fernando Nunes de Almeida - Matrícula: 2012101188
+- Julio Cesar de Souza Lima - Matrícula: 2013201790
