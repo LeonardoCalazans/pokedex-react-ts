@@ -17,6 +17,27 @@ jobs:
       - name: Build frontend
         run: yarn build
 
+      - name: create env file
+        env:
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.API_KEY }}
+          REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.MESSAGING_SENDER_ID }}
+          REACT_APP_FIREBASE_APP_ID: ${{ secrets.APP_ID }}
+          REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
+          REACT_APP_POKEAPI: ${{ secrets.POKEAPI }}
+        run: |
+          touch .env
+          echo REACT_APP_FIREBASE_API_KEY=${{ secrets.API_KEY }} >> .env
+          echo REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.AUTH_DOMAIN }} >> .env
+          echo REACT_APP_FIREBASE_PROJECT_ID=${{ secrets.PROJECT_ID }} >> .env
+          echo REACT_APP_FIREBASE_STORAGE_BUCKET=${{ secrets.STORAGE_BUCKET }} >> .env
+          echo REACT_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.MESSAGING_SENDER_ID }} >> .env
+          echo REACT_APP_FIREBASE_APP_ID=${{ secrets.APP_ID }} >> .env
+          echo REACT_APP_FIREBASE_MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }} >> .env
+          echo REACT_APP_POKEAPI=${{ secrets.POKEAPI }} >> .env
+
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v2.2.2
         with:
@@ -25,11 +46,11 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.API_KEY }}
           REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
-          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.PROJECT_ID }}
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.MESSAGING_SENDER_ID }}
           REACT_APP_FIREBASE_APP_ID: ${{ secrets.APP_ID }}
           REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
-          REACT_APP_FIREBASE_REACT_APP_POKEAPI: ${{ secrets.POKEAPI }}
+          REACT_APP_POKEAPI: ${{ secrets.POKEAPI }}
 
       
