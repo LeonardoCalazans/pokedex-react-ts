@@ -24,7 +24,7 @@ interface PokedexProps {}
 const Home: React.FC<PokedexProps> = () => {
   const { favorites } = useContext(FavoriteContext);
   const navigate = useNavigate();
-  const { data, isLoading, isRefetching, refetch } = useQuery(
+  const { data, isLoading, isRefetching } = useQuery(
     `listPokemons`,
     listPokemons
   );
