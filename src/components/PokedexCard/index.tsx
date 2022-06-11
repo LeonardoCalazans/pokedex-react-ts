@@ -47,7 +47,7 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
         title={pokemonName}
         onClick={handleClick}
       />
-      <view
+      <div
         style={{
           flexDirection: "row",
           display: "flex",
@@ -71,7 +71,7 @@ const PokedexCard: React.FC<PokedexCardProps> = ({ pokemon }) => {
             <Favorite color={isFavorite ? `error` : `disabled`} />
           </IconButton>
         </CardActions>
-      </view>
+      </div>
     </Card>
   );
 };
